@@ -42,8 +42,6 @@
       0% { transform: translate(0,0) scale(1); }
       100% { transform: translate(-50px,-30px) scale(1.2); }
     }
-
-    /* ── Put content above glow ── */
     nav, section, footer { position: relative; z-index: 1; }
 
     /* ── Navigation ── */
@@ -60,7 +58,6 @@
     }
     nav a:hover { color: #818cf8; }
 
-    /* ── Sections ── */
     section { max-width: 860px; margin: 0 auto; padding: 6rem 2rem; }
 
     /* ── Hero ── */
@@ -89,11 +86,10 @@
       background-clip: text;
     }
     .hero .tagline {
-      font-size: 1.3rem; color: #94a3b8; margin-bottom: 1rem;
-      font-weight: 400;
+      font-size: 1.3rem; color: #94a3b8; margin-bottom: 0.75rem;
     }
     .hero .sub {
-      font-size: 1rem; color: #64748b; max-width: 520px;
+      font-size: 1rem; color: #64748b; max-width: 530px;
       line-height: 1.8;
     }
     .hero .cta-btn {
@@ -102,7 +98,6 @@
       background: linear-gradient(135deg, #6366f1, #8b5cf6);
       color: #fff; font-weight: 600; font-size: 0.95rem;
       padding: 0.85rem 2.2rem; border-radius: 100px;
-      letter-spacing: 0.3px;
       transition: transform 0.2s, box-shadow 0.3s;
       box-shadow: 0 4px 20px rgba(99,102,241,0.3);
     }
@@ -123,6 +118,33 @@
       background-clip: text;
     }
 
+    /* ── Stats ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .stat-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .stat-item .number {
+      font-size: 1.6rem; font-weight: 800;
+      background: linear-gradient(135deg, #818cf8, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-item .label {
+      font-size: 0.75rem; color: #64748b;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      margin-top: 0.25rem;
+    }
+
     /* ── About ── */
     .about-card {
       background: rgba(255,255,255,0.03);
@@ -131,39 +153,50 @@
       padding: 2.5rem;
     }
     .about-card p {
-      font-size: 1.1rem; color: #b0b8cc; margin-bottom: 1rem;
+      font-size: 1.05rem; color: #b0b8cc; margin-bottom: 1rem;
     }
     .about-card p:last-child { margin-bottom: 0; }
     .about-card strong { color: #e2e8f0; }
 
-    /* ── Stats row ── */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #818cf8, #f472b6, transparent);
     }
-    .stat-item {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 1.5rem;
-      text-align: center;
+    .tl-item { margin-bottom: 2rem; position: relative; }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: -2.25rem; top: 0.4rem;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #818cf8; border: 3px solid #0b0d17;
     }
-    .stat-item .number {
-      font-size: 1.8rem; font-weight: 800;
-      background: linear-gradient(135deg, #818cf8, #f472b6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-item .period {
+      font-size: 0.8rem; color: #64748b; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 0.1rem;
     }
-    .stat-item .label {
-      font-size: 0.8rem; color: #64748b;
-      text-transform: uppercase; letter-spacing: 1px;
-      margin-top: 0.25rem;
+    .tl-item h3 {
+      color: #e2e8f0; font-size: 1.15rem; font-weight: 600;
+    }
+    .tl-item .company {
+      color: #818cf8; font-weight: 500; font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .tl-item ul {
+      list-style: none; margin-top: 0.5rem;
+    }
+    .tl-item ul li {
+      color: #8892a8; font-size: 0.9rem;
+      padding-left: 1rem; position: relative; margin-bottom: 0.25rem;
+    }
+    .tl-item ul li::before {
+      content: '▸'; position: absolute; left: 0; color: #818cf8;
     }
 
-    /* ── Projects ── */
+    /* ── Projects / Achievements ── */
     .project-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
       gap: 1.5rem;
@@ -182,17 +215,38 @@
       font-size: 1.5rem; margin-bottom: 0.75rem;
     }
     .project-card h3 {
-      color: #e2e8f0; font-size: 1.15rem; margin-bottom: 0.4rem;
+      color: #e2e8f0; font-size: 1.1rem; margin-bottom: 0.4rem;
       font-weight: 600;
+    }
+    .project-card .meta {
+      color: #818cf8; font-size: 0.78rem; font-weight: 500;
+      margin-bottom: 0.5rem;
     }
     .project-card p {
       color: #8892a8; font-size: 0.9rem; line-height: 1.6;
     }
     .project-card .tag {
-      display: inline-block; margin-top: 0.75rem;
+      display: inline-block; margin-top: 0.6rem;
       background: rgba(99,102,241,0.1); color: #818cf8;
-      padding: 0.25rem 0.6rem; border-radius: 6px;
+      padding: 0.2rem 0.6rem; border-radius: 6px;
       font-size: 0.72rem; font-weight: 600;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+    }
+    .skill-tag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 0.5rem 1rem; border-radius: 100px;
+      color: #b0b8cc; font-size: 0.85rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .skill-tag:hover {
+      background: rgba(99,102,241,0.1);
+      border-color: rgba(99,102,241,0.3);
+      color: #fff;
     }
 
     /* ── Contact ── */
@@ -209,8 +263,7 @@
     .contact-links a:hover {
       background: rgba(99,102,241,0.08);
       border-color: rgba(99,102,241,0.35);
-      color: #fff;
-      transform: translateY(-2px);
+      color: #fff; transform: translateY(-2px);
     }
 
     /* ── Footer ── */
@@ -225,8 +278,8 @@
       .hero h1 { font-size: 2.4rem; }
       nav { gap: 1.25rem; padding: 0.75rem 1rem; }
       section { padding: 4rem 1.25rem; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
       .project-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; gap: 1rem; }
       .contact-links { flex-direction: column; }
       .contact-links a { justify-content: center; }
     }
@@ -234,20 +287,23 @@
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
-    <a href="#projects">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
-    <span class="badge">✦ Open to opportunities</span>
+    <span class="badge">✦ Digital Marketing Specialist at ICHIGO Inc</span>
     <h1>Vernanda Syahputra</h1>
-    <p class="tagline">Digital Marketer &bull; Paid Ads &bull; CRM Specialist</p>
+    <p class="tagline">Paid Ads &bull; CRM &bull; Growth Strategy</p>
     <p class="sub">
-      4+ years of driving growth across industries through data-driven campaigns that deliver measurable results.
+      Data-driven digital marketer with 4+ years of experience driving growth 
+      across e-commerce and cross-border brands through strategic paid media 
+      and CRM optimization.
     </p>
     <a href="#contact" class="cta-btn">Let's work together →</a>
   </section>
@@ -262,54 +318,172 @@
         <div class="label">Years Experience</div>
       </div>
       <div class="stat-item">
-        <div class="number">Multiple</div>
-        <div class="label">Industries Served</div>
+        <div class="number">7+</div>
+        <div class="label">Paid Channels</div>
       </div>
       <div class="stat-item">
-        <div class="number">1.5M+</div>
-        <div class="label">Ads Budget Managed</div>
+        <div class="number">6.5x</div>
+        <div class="label">Highest ROAS</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">3.80</div>
+        <div class="label">GPA (Marketing)</div>
       </div>
     </div>
 
     <div class="about-card">
       <p>
-        Hi, I'm <strong>Vernanda Syahputra</strong> — a <strong>Digital Marketer</strong> with <strong>4+ years of experience</strong> helping businesses grow through strategic paid advertising and CRM management.
+        I'm a <strong>Digital Marketing Specialist</strong> currently at <strong>ICHIGO Inc</strong>, 
+        where I manage paid channels across <strong>Meta Ads, Google Ads, TikTok Ads, and more</strong> 
+        for 4 cross-border e-commerce brands. I specialize in end-to-end campaign management — 
+        from creative briefing and budget planning to execution and reporting.
       </p>
       <p>
-        I've worked across a wide range of industries, handling end-to-end campaign management on platforms like Meta Ads, Google Ads, and more. My expertise lies in optimizing CPA, scaling budgets effectively, and building CRM systems that turn leads into loyal customers.
+        Previously, I've delivered measurable results across agencies and in-house teams, 
+        driving <strong>5% sign-up growth</strong>, <strong>30% increase in app traffic</strong>, 
+        <strong>22% reduction in cost per lead</strong>, and <strong>6.5x ROAS</strong> on e-commerce ads. 
+        I also built CRM campaigns on Moengage that boosted engagement through push notifications, 
+        smart triggers, and email marketing.
       </p>
       <p>
-        Whether it's a startup looking for their first breakthrough or an established brand aiming to level up — I bring the data, the strategy, and the execution.
+        Based in <strong>Jakarta, Indonesia</strong>. I speak English (TOEIC 895) and Bahasa Indonesia.
       </p>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Featured <span class="highlight">Work</span></h2>
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Work <span class="highlight">Experience</span></h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="period">Apr 2024 – Present</div>
+        <h3>Digital Marketing Specialist</h3>
+        <div class="company">ICHIGO Inc — Jakarta</div>
+        <ul>
+          <li>Manage 7+ paid channels (Meta, Google, TikTok, Tapjoy, Pinterest, Digital Turbine, CTV) for 4 cross-border e-commerce brands</li>
+          <li>Developed end-to-end process from creative brief to reporting, maintaining 5% sign-up growth during Q2–Q3 2024</li>
+          <li>Created new team workflow and framework that optimized budget planning and creative production efficiency</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="period">May 2023 – Apr 2024</div>
+        <h3>Strategic & Performance Marketing Officer</h3>
+        <div class="company">Jaris & K — Jakarta</div>
+        <ul>
+          <li>Developed pitching strategies that achieved 20% success rate in acquiring new clients</li>
+          <li>Handled Paid Ads (GDN, SEM, Meta, TikTok) and SEO — achieved 100% of client KPIs</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="period">Aug 2022 – Apr 2023</div>
+        <h3>Performance Marketing Specialist</h3>
+        <div class="company">Garis Temu — Tangerang Selatan</div>
+        <ul>
+          <li>Achieved 100% of client targets across Meta, Google, and TikTok Ads</li>
+          <li>A/B tested ad creatives that effectively reduced cost per result</li>
+          <li>Achieved 6.5x ROAS on e-commerce ads (TopAds & Shopee Ads)</li>
+          <li>Built weekly/monthly reports with ad performance, creative insights, and business recommendations</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="period">Nov 2021 – Jul 2022</div>
+        <h3>Digital Marketing Executive (Junior Lead → Staff)</h3>
+        <div class="company">Jayadi Media — Bandung</div>
+        <ul>
+          <li>Led a team of 2, increasing client leads by 20% in the first month</li>
+          <li>Increased app & website traffic by 30% through Google, Facebook, and TikTok Ads</li>
+          <li>Executed CRM campaigns on Moengage (push notifications, smart triggers, in-app banners, email) — increased app traffic by 30%</li>
+          <li>Reduced client campaign cost per lead by 22% through data-driven optimization</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Achievements / Projects -->
+  <section id="achievements">
+    <h2>Key <span class="highlight">Achievements</span></h2>
     <div class="project-grid">
 
       <div class="project-card">
-        <div class="icon">📊</div>
-        <h3>Meta Ads Campaign</h3>
-        <p>Scaled a campaign from zero to 1.5M JPY monthly spend while reducing CPA by 50% through audience segmentation and creative testing.</p>
-        <span class="tag">Meta Ads</span>
-      </div>
-
-      <div class="project-card">
-        <div class="icon">🤖</div>
-        <h3>CRM Automation</h3>
-        <p>Built an automated CRM pipeline that increased lead conversion by 35% and reduced manual follow-up time by 60%.</p>
-        <span class="tag">CRM</span>
-      </div>
-
-      <div class="project-card">
         <div class="icon">📈</div>
-        <h3>Multi-Channel Strategy</h3>
-        <p>Designed and executed a cross-platform paid media strategy across Meta, Google, and LinkedIn, generating 3x ROI in 6 months.</p>
-        <span class="tag">Strategy</span>
+        <h3>5% Sign-Up Growth</h3>
+        <div class="meta">ICHIGO Inc · 2024</div>
+        <p>Sustained 5% sign-up growth across Q2–Q3 2024 by optimizing paid media strategy across 4 cross-border e-commerce brands.</p>
+        <span class="tag">Meta Ads</span>
+        <span class="tag">Google Ads</span>
       </div>
 
+      <div class="project-card">
+        <div class="icon">🛒</div>
+        <h3>6.5x ROAS on E-Commerce</h3>
+        <div class="meta">Garis Temu · 2022–2023</div>
+        <p>Created and optimized TopAds & Shopee Ads campaigns, achieving 6.5x return on ad spend while hitting all client targets.</p>
+        <span class="tag">Shopee Ads</span>
+        <span class="tag">TopAds</span>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">📱</div>
+        <h3>30% App Traffic Boost</h3>
+        <div class="meta">Jayadi Media · 2021–2022</div>
+        <p>Increased app traffic by 30% through CRM campaigns on Moengage — push notifications, smart triggers, in-app banners, and email.</p>
+        <span class="tag">CRM</span>
+        <span class="tag">Moengage</span>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">💰</div>
+        <h3>22% Cost Reduction</h3>
+        <div class="meta">Jayadi Media · 2022</div>
+        <p>Reduced client campaign cost per lead by 22% through systematic optimization of paid channels and CRM workflows.</p>
+        <span class="tag">Optimization</span>
+        <span class="tag">Analytics</span>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">🎯</div>
+        <h3>100% KPI Achievement</h3>
+        <div class="meta">Jaris & K · 2023–2024</div>
+        <p>Consistently achieved 100% of client KPIs across GDN, SEM, Meta Ads, TikTok Ads, and SEO campaigns.</p>
+        <span class="tag">SEM</span>
+        <span class="tag">SEO</span>
+      </div>
+
+      <div class="project-card">
+        <div class="icon">🤝</div>
+        <h3>20% Client Win Rate</h3>
+        <div class="meta">Jaris & K · 2023</div>
+        <p>Developed strategic pitching frameworks that achieved a 20% success rate in acquiring new clients.</p>
+        <span class="tag">Strategy</span>
+        <span class="tag">Pitching</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills & <span class="highlight">Tools</span></h2>
+    <div class="skills-grid">
+      <span class="skill-tag">Digital Marketing Strategy</span>
+      <span class="skill-tag">Paid Ads (Meta/Google/TikTok)</span>
+      <span class="skill-tag">CRM (Moengage)</span>
+      <span class="skill-tag">SEO</span>
+      <span class="skill-tag">Social Media Marketing</span>
+      <span class="skill-tag">Google Analytics</span>
+      <span class="skill-tag">Google Tag Manager</span>
+      <span class="skill-tag">Google Ads Editor</span>
+      <span class="skill-tag">Appsflyer</span>
+      <span class="skill-tag">Klaviyo</span>
+      <span class="skill-tag">Tableau</span>
+      <span class="skill-tag">Chartmogul</span>
+      <span class="skill-tag">Chargebee</span>
+      <span class="skill-tag">Digital Marketing Analytics</span>
     </div>
   </section>
 
@@ -317,7 +491,7 @@
   <section id="contact">
     <h2>Let's <span class="highlight">Connect</span></h2>
     <p style="color:#8892a8; margin-bottom:0.5rem; font-size:1.05rem;">
-      Got a project, a question, or just want to say hi? Reach out!
+      Have a project, an opportunity, or just want to chat? Let's talk.
     </p>
     <div class="contact-links">
       <a href="mailto:vernandasyahput@gmail.com">✉️ vernandasyahput@gmail.com</a>
@@ -326,9 +500,8 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    &copy; 2026 Vernanda Syahputra. Built with purpose.
+    &copy; 2026 Vernanda Syahputra. Jakarta, Indonesia.
   </footer>
 
 </body>
